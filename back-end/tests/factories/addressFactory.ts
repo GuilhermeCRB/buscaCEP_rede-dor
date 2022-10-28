@@ -1,0 +1,43 @@
+import { faker } from "@faker-js/faker";
+
+export function createAddress(validCep: string){
+    return {
+        status: 200,
+        ok: true,
+        code: validCep,
+        state: faker.address.state(),
+        city: faker.address.city(),
+        district: faker.address.cityName(),
+        address: faker.address.streetAddress(),
+        statusText: faker.animal.bird()
+    }
+}
+
+export function createFormatedAddress(validCep: string){
+    return {
+        status: 200,
+        code: validCep,
+        state: faker.address.state(),
+        city: faker.address.city(),
+        district: faker.address.cityName(),
+        address: faker.address.streetAddress(),
+    }
+}
+
+export function createNotFoundError(){
+    return {
+        status: 404,
+        ok: false,
+        message: "CEP não encontrado",
+        statusText: faker.animal.bird()
+    }
+}
+
+export function createBadRequestError(){
+    return {
+        status: 400,
+        ok: false,
+        message: "Bad Request",
+        statusText: faker.animal.bird()
+    }
+}
