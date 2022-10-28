@@ -23,3 +23,12 @@ export function createFormatedAddress(validCep: string){
         address: faker.address.streetAddress(),
     }
 }
+
+export function createNotFoundError(){
+    return {
+        status: 404,
+        ok: false,
+        message: "CEP não encontrado",
+        statusText: faker.animal.bird()
+    }
+}
