@@ -4,8 +4,16 @@ function createValidCep() {
     }
 }
 
+function createInvalidCep() {
+    return {
+        cep: "00000000"
+    }
+}
+
+
 const cepFactory = {
     createValidCep,
+    createInvalidCep
 };
 
 export default cepFactory;
