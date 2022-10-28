@@ -20,4 +20,14 @@ describe("Gets address by CEP tests:", () => {
         expect(isApiAddresError(response.body)).toBe(true);
         expect(response.statusCode).toBe(404);
     });
+
+    it("Given a bad requested CEP, throws a bad resquest error (400).", async () => {
+        const badRequestedCeps = cepFactory.createBadRequestedCep();
+
+        await Promise.all(badRequestedCeps.map(async(badRequestedCep) => {
+            const response = await supertest(app).get("/cep").send(badRequestedCep);
+            expect(isApiAddresError(response.body)).toBe(true);
+            expect(response.statusCode).toBe(400);
+        }))
+    });
 });

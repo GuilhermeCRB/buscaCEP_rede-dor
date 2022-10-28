@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 function createValidCep() {
     return {
         cep: "27320001"
@@ -10,10 +12,24 @@ function createInvalidCep() {
     }
 }
 
+function createBadRequestedCep() {
+    return  [
+        {
+            cep: faker.random.alphaNumeric(8)
+        },
+        {
+            cep: faker.random.numeric(9)
+        },
+        {
+            cep: faker.random.numeric(7)
+        }
+    ];
+}
 
 const cepFactory = {
     createValidCep,
-    createInvalidCep
+    createInvalidCep,
+    createBadRequestedCep
 };
 
 export default cepFactory;
