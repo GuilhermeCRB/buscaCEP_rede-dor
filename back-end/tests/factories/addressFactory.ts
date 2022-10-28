@@ -37,7 +37,7 @@ export function createBadRequestError(){
     return {
         status: 400,
         ok: false,
-        message: "CEP não encontrado",
+        message: "Bad Request",
         statusText: faker.animal.bird()
     }
 }

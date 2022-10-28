@@ -1,11 +1,10 @@
 import axios from "axios";
 import { jest } from "@jest/globals";
 
-import {getAddress, isApiAddresError, isFormatedAddres} from "../../src/services/cepService";
-import {createAddress, createFormatedAddress, createNotFoundError} from "../factories/addressFactory";
+import {getAddress, isFormatedAddres} from "../../src/services/cepService";
+import {createAddress, createBadRequestError, createFormatedAddress, createNotFoundError} from "../factories/addressFactory";
 import cepFactory from "../factories/cepFactory";
 import addressFactory from "../../src/factories/formatAddress";
-import { notFoundError } from "../../src/utils/errorUtils";
 
 describe("CEP service unit test", () => {
     it("Returns an address, given a valid CEP.", async() => {
@@ -37,16 +36,18 @@ describe("CEP service unit test", () => {
     })
 
     it("Throws a bad request error, given a wrong CEP pattern.", async() => {
-        const invalidCep = cepFactory.createInvalidCep();
-        const mockedError = createNotFoundError();
+        const badRequestedCeps = cepFactory.createBadRequestedCep();
+        const mockedError = createBadRequestError();
         
         const mockGet = jest.spyOn(axios, "get");
         mockGet.mockImplementation(() => Promise.resolve({data: mockedError}));
 
         try{
-           await getAddress(invalidCep.cep);
+            await Promise.all(badRequestedCeps.map(async(badRequestedCep) => {
+                await getAddress(badRequestedCep.cep);
+            }))
         }catch(error){
-            expect(error).toEqual({type: 'not_found', message: 'CEP não encontrado'});
+            expect(error).toEqual({type: 'bad_request', message: 'Bad Request'});
         }
     })
 })
