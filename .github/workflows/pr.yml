@@ -7,6 +7,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Run tests
-        run: docker-compose -f ./back-end/docker-compose.yml run node_app npm run test && npm run test:unit
+        run: docker-compose up -f ./back-end/docker-compose.yml run node_app npm run test && npm run test:unit
       - name: Build
         run: npm i && npm run build
