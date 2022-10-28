@@ -1,7 +1,13 @@
-import { ApiAddress } from "../services/cepService.js";
+import { ApiAddress, FormatedAddress } from "../services/cepService.js";
 
-export default function formatAddress(address: ApiAddress){
+function formatAddress(address: ApiAddress){
     delete address.ok; delete address.statusText;
-    address.code = address.code.replace("-", "");
-    return address;
+    const formatedAddress: FormatedAddress = {...address, code: address.code.replace("-", "")}
+    return formatedAddress;
 }
+
+const addresFactory = {
+    formatAddress
+};
+
+export default addresFactory;

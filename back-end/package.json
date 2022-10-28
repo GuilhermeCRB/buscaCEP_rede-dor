@@ -9,7 +9,7 @@
     "dev": "nodemon src/server.ts",
     "start": "node dist/server.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest -- -i --coverage ./tests/unit"
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --coverage ./tests/unit"
   },
   "keywords": [],
   "author": "",

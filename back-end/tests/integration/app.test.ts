@@ -1,8 +1,8 @@
 import supertest from "supertest";
 
-import app from "../src/app";
-import cepFactory from "./factories/cepFactory";
-import {isApiAddres, isApiAddresError} from "../src/services/cepService";
+import app from "../../src/app";
+import cepFactory from "../factories/cepFactory";
+import {isApiAddres, isApiAddresError} from "../../src/services/cepService";
 
 describe("Gets address by CEP tests:", () => {
     it("Given a valid CEP, gets an address.", async () => {
