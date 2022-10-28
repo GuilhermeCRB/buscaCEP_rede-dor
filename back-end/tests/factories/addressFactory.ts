@@ -32,3 +32,12 @@ export function createNotFoundError(){
         statusText: faker.animal.bird()
     }
 }
+
+export function createBadRequestError(){
+    return {
+        status: 400,
+        ok: false,
+        message: "CEP não encontrado",
+        statusText: faker.animal.bird()
+    }
+}

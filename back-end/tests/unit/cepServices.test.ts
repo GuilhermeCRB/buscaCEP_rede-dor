@@ -35,4 +35,18 @@ describe("CEP service unit test", () => {
             expect(error).toEqual({type: 'not_found', message: 'CEP não encontrado'});
         }
     })
+
+    it("Throws a bad request error, given a wrong CEP pattern.", async() => {
+        const invalidCep = cepFactory.createInvalidCep();
+        const mockedError = createNotFoundError();
+        
+        const mockGet = jest.spyOn(axios, "get");
+        mockGet.mockImplementation(() => Promise.resolve({data: mockedError}));
+
+        try{
+           await getAddress(invalidCep.cep);
+        }catch(error){
+            expect(error).toEqual({type: 'not_found', message: 'CEP não encontrado'});
+        }
+    })
 })

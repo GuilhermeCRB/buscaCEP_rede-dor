@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "nodemon src/server.ts",
     "start": "node dist/server.js",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles",
     "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --coverage ./tests/unit"
   },
   "keywords": [],
