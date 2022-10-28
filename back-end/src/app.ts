@@ -11,5 +11,6 @@ app.use(cors());
 app.use(json());
 app.use(router);
 app.use(errorHandlerMiddleware);
+//teste
 
 export default app;
