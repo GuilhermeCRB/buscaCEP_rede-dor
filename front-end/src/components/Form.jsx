@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import InputMask from 'react-input-mask';
+import {ThreeDots} from 'react-loader-spinner';
 
 export default function Form({ setResponse }){
     const [cep, setCep] = useState('');
     const [formState, setFormState] = useState(false);
     const BASE_API_URL = process.env.REACT_APP_API_BASE_URL;
+    const ref = useRef();
 
     function handleSubmit(e){
         e.preventDefault();
@@ -16,13 +19,11 @@ export default function Form({ setResponse }){
         const promise = axios.get(URL);
 
         promise.then(({ data }) => {
-            console.log(data);
             setResponse(data)
             setFormState(false);
         });
 
         promise.catch(({ response }) => {
-            console.log(response);
             setResponse(response);
             setFormState(false);
         });
@@ -31,24 +32,89 @@ export default function Form({ setResponse }){
     return(
         <FormContainer onSubmit={handleSubmit}>
             <h1>Buscador de CEP</h1>
-            <input 
+            <Input 
                 required
+                ref={ref}
+                name='cep'
                 type='text'
-                placeholder='__.___-___' 
-                mask='99.999-999'
+                placeholder='digite o CEP que deseja encontrar...' 
+                mask='99999-999'
                 disabled={formState}
                 value={cep.cep}
                 onChange={e => setCep(e.target.value)}
             />
-            <button type="submit" disabled={formState}>Buscar</button>
+            <button type="submit" disabled={formState}>
+                {formState ? 
+                    <ThreeDots width={"15%"} height={"100%"} color={"var(--main-color)"} /> 
+                    : 
+                    "Buscar"
+                }
+            </button>
         </FormContainer>
     );
 }
 
 const FormContainer = styled.form`
-    width: 70%;
-    height: 45%;
+    height: calc(40%);
     display: flex;
     flex-direction: column;
-    background-color: red;
+    justify-content: center;
+    margin-bottom: 6%;
+    padding: 0 5%;
+    font-size: calc(1rem + 20vw);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px var(--secondary-color);
+
+    h1{
+        margin-bottom: calc(10px + 5%);
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 700;
+        flex-wrap: wrap;
+
+        @media (max-width: 320px) {
+            font-size: 1.2rem;
+        }
+    }
+
+    button{
+        width: 100%;
+        height: 30px;
+        font-family: var(--main-font);
+        color: var(--font-color);
+        padding: 2% auto;
+        border: none;
+        border-radius: 5px;
+        color: var(--main-color);
+        background-color: var(--secondary-color);
+        transition: 0.2s ease-in-out;
+
+        :hover{
+            cursor: pointer;
+            background-color: #0c529c;
+        }
+
+        >div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 `;
+
+const Input = styled(InputMask)`
+    &&{
+        margin-bottom: 5%;
+        padding: 5% 3%;
+        border: 1px solid var(--font-color);
+        border-radius: 5px;
+
+        @media (max-width: 375px) {
+            font-size: 0.9rem;
+        }
+
+        :focus{
+            outline-color: var(--secondary-color);
+        }
+    }
+`

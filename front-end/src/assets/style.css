@@ -5,20 +5,14 @@
 
   --main-color: #fff;
   --secondary-color: #004186;
+  --font-color: #4F4F54;
 
+  --error-message: rgb(191, 16, 16);
 }
 
 html, body, .root{
   font-family: var(--main-font);
   font-size: 12px;
+  color: var(--font-color);
 };
-
-body input{
-  font-family: var(--main-font);
-}
-
-body input::placeholder{
-  font-family: var(--main-font);
-  font-size: 0.8rem;
-}
 
