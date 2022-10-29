@@ -47,7 +47,7 @@ export default function Form({ setResponse }){
                 {formState ? 
                     <ThreeDots width={"15%"} height={"100%"} color={"var(--main-color)"} /> 
                     : 
-                    "Buscar"
+                    "Enviar"
                 }
             </button>
         </FormContainer>
@@ -59,6 +59,7 @@ const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-bottom: 6%;
     padding: 0 5%;
     font-size: calc(1rem + 20vw);
