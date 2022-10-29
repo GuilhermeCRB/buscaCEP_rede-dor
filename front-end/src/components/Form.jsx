@@ -2,32 +2,35 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-export default function Form(){
+export default function Form({ setResponse }){
     const [cep, setCep] = useState('');
     const [formState, setFormState] = useState(false);
     const BASE_API_URL = process.env.REACT_APP_API_BASE_URL;
 
     function handleSubmit(e){
         e.preventDefault();
+        setResponse();
         setFormState(true);
 
-        console.log(cep)
         const URL = BASE_API_URL + `/cep/${cep}`;
         const promise = axios.get(URL);
 
         promise.then(({ data }) => {
             console.log(data);
+            setResponse(data)
             setFormState(false);
         });
 
-        promise.catch(err => {
-            console.log(err);
+        promise.catch(({ response }) => {
+            console.log(response);
+            setResponse(response);
             setFormState(false);
         });
     }
 
     return(
-        <FormContainer onSubmit={e => handleSubmit(e)}>
+        <FormContainer onSubmit={handleSubmit}>
+            <h1>Buscador de CEP</h1>
             <input 
                 required
                 type='text'
