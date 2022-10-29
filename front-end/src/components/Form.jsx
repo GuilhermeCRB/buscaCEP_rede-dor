@@ -55,23 +55,19 @@ export default function Form({ setResponse }){
 }
 
 const FormContainer = styled.form`
-    width: calc(190px + 20%);
-    height: calc(80px + 20%);
-    position: relative;
+    height: calc(40%);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 10%;
+    margin-bottom: 6%;
     padding: 0 5%;
     font-size: calc(1rem + 20vw);
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px var(--secondary-color);
 
     h1{
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        transform: translateY(-50%) translateX(-50%);
+        margin-bottom: calc(10px + 5%);
+        text-align: center;
         font-size: 1.4rem;
         font-weight: 700;
         flex-wrap: wrap;
@@ -91,6 +87,12 @@ const FormContainer = styled.form`
         border-radius: 5px;
         color: var(--main-color);
         background-color: var(--secondary-color);
+        transition: 0.2s ease-in-out;
+
+        :hover{
+            cursor: pointer;
+            background-color: #0c529c;
+        }
 
         >div{
             display: flex;

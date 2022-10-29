@@ -15,5 +15,15 @@ export default function Address({ response }){
 }
 
 const AddressContainer = styled.div`
-    
+
+    span{
+        margin-right: 2%;
+        font-weight: 700;
+        color: var(--secondary-color);
+    }
+
+    p{
+        font-size: 1.2rem;
+        margin-bottom: 1%;
+    }
 `

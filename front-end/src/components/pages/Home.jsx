@@ -22,6 +22,14 @@ const Main = styled.main`
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    padding: 0 30%;
+
+    @media (max-width: 375px) {
+        padding: 0 30px;
+    }
+
+    @media (max-width: 425px) {
+        padding: 0 10%;
+    }
 `;
