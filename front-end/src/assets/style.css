@@ -1,0 +1,24 @@
+*{
+  box-sizing: border-box;
+
+  --main-font: 'Roboto';
+
+  --main-color: #fff;
+  --secondary-color: #004186;
+
+}
+
+html, body, .root{
+  font-family: var(--main-font);
+  font-size: 12px;
+};
+
+body input{
+  font-family: var(--main-font);
+}
+
+body input::placeholder{
+  font-family: var(--main-font);
+  font-size: 0.8rem;
+}
+
