@@ -25,6 +25,12 @@ export default function Form({ setResponse }) {
     });
   }
 
+  document.addEventListener("keypress", function(e) {
+    if(e.key === 'Enter') {
+      ref.current.click();
+    }
+  });
+
   return (
     <FormContainer onSubmit={handleSubmit}>
       <h1>Buscador de CEP</h1>
@@ -39,7 +45,7 @@ export default function Form({ setResponse }) {
         value={cep.cep}
         onChange={(e) => setCep(e.target.value)}
       />
-      <button type="submit" disabled={formState}>
+      <button id="submi" type="submit" disabled={formState}>
         {formState ? <ThreeDots width={'15%'} height={'100%'} color={'var(--main-color)'} /> : 'Enviar'}
       </button>
     </FormContainer>
