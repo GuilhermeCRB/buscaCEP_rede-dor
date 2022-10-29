@@ -55,12 +55,15 @@ export default function Form({ setResponse }){
 }
 
 const FormContainer = styled.form`
-    height: calc(40%);
+    width: var(--box-width);
+    height: calc(40% - 30px);
+    max-width: var(--box-max-width);
+    max-height: var(--box-max-height);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 6%;
+    margin: 0 auto;
+    margin-bottom: 30px;
     padding: 0 5%;
     font-size: calc(1rem + 20vw);
     border-radius: 10px;
@@ -83,7 +86,7 @@ const FormContainer = styled.form`
         height: 30px;
         font-family: var(--main-font);
         color: var(--font-color);
-        padding: 2% auto;
+        padding: 3% auto;
         border: none;
         border-radius: 5px;
         color: var(--main-color);

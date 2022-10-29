@@ -8,6 +8,9 @@ export default function ErrorMessage({ response }){
 }
 
 const Message = styled.p`
+    width: var(--box-width);
+    max-width: var(--box-max-width);
+    margin: 0 auto;
     text-align: center;
     font-size: 1.1rem;
     font-weight: 700;

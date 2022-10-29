@@ -15,6 +15,9 @@ export default function Address({ response }){
 }
 
 const AddressContainer = styled.div`
+    width: var(--box-width);
+    margin: 0 auto;
+    max-width: var(--box-max-width);
 
     span{
         margin-right: 2%;

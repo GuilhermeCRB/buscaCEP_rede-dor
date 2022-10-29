@@ -23,13 +23,4 @@ const Main = styled.main`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 30%;
-
-    @media (max-width: 375px) {
-        padding: 0 30px;
-    }
-
-    @media (max-width: 425px) {
-        padding: 0 10%;
-    }
 `;
