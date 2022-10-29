@@ -20,5 +20,6 @@ const HeaderContainer = styled.header`
 
   img {
     width: 15vh;
+    min-width: 100px;
   }
 `;

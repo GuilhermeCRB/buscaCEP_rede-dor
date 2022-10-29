@@ -57,6 +57,7 @@ const FormContainer = styled.form`
   height: calc(40% - 30px);
   max-width: var(--box-max-width);
   max-height: var(--box-max-height);
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
