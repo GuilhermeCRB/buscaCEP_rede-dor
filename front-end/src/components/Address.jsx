@@ -3,11 +3,11 @@ export default function Address({ response }){
 
     return(
         <div>
-            <p>{address}</p>
-            <p>{city}</p>
-            <p>{code}</p>
-            <p>{district}</p>
-            <p>{state}</p>
+            <p><span>CEP: </span>{code}</p>
+            <p><span>Logradouro: </span>{address}</p>
+            <p><span>Cidade: </span>{city}</p>
+            <p><span>Bairro: </span>{district}</p>
+            <p><span>UF: </span>{state}</p>
         </div>
     )
 }

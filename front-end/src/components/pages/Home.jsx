@@ -11,8 +11,8 @@ export default function Home(){
     return(
         <Main>
             <Form setResponse={setResponse} />
-            {response && <Address response={response} />}
-            {response && <ErrorMessage response={response} />}
+            {response && response.status === 200 ? <Address response={response} /> : <></>}
+            {response && response.status !== 200 ? <ErrorMessage response={response} /> : <></>}
         </Main>
     );
 }
