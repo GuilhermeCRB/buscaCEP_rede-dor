@@ -32,7 +32,10 @@ export async function getAddress(cep: string) {
 
     if(isApiAddresError(data)) {
         if(data.status === 404) throw notFoundError(data.message);
-        if(data.status === 400) throw badRequestError(data.message);
+        if(data.status === 400) {
+            if(data.message === 'Blocked by flood') data.message = 'Foi detectado um excesso de requisições. Por favor, tente mais tarde.'
+            throw badRequestError(data.message)
+        };
     }
 
     if(isApiAddres(data)) {
