@@ -16,11 +16,16 @@ export default function Form({ setResponse }) {
 
     const promise = getAddress(cep);
     promise.then(({ data }) => {
-      setResponse(data);
-      setFormState(false);
+        setResponse(data);
+        setFormState(false);
     });
-    promise.catch(({ response }) => {
-      setResponse(response);
+    promise.catch((error) => {
+      if(error?.message === 'Network Error'){
+        setResponse({data: "Parece que algo deu errado. Por favor, tente novamente mais tarde."});
+      }else{
+        setResponse(error.response);
+      }
+
       setFormState(false);
     });
   }

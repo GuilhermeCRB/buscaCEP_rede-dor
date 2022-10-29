@@ -9,5 +9,5 @@ export function errorHandlerMiddleware(error: Error | AppError, req: Request, re
     return res.status(errorTypeToStatusCode(error.type)).send(error.message);
   }
 
-  res.sendStatus(500);
+  res.status(500).send("Parece que algo deu errado. Por favor, tente novamente mais tarde.");
 }
