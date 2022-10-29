@@ -1,13 +1,12 @@
 import { useState, useRef } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import InputMask from 'react-input-mask';
 import {ThreeDots} from 'react-loader-spinner';
+import { getAddress } from '../services/cepApi';
 
 export default function Form({ setResponse }){
     const [cep, setCep] = useState('');
     const [formState, setFormState] = useState(false);
-    const BASE_API_URL = process.env.REACT_APP_API_BASE_URL;
     const ref = useRef();
 
     function handleSubmit(e){
@@ -15,14 +14,11 @@ export default function Form({ setResponse }){
         setResponse();
         setFormState(true);
 
-        const URL = BASE_API_URL + `/cep/${cep}`;
-        const promise = axios.get(URL);
-
+        const promise = getAddress(cep);
         promise.then(({ data }) => {
             setResponse(data)
             setFormState(false);
         });
-
         promise.catch(({ response }) => {
             setResponse(response);
             setFormState(false);
